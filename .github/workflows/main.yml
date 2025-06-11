@@ -50,7 +50,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          dockerfile: Dockerfile
           push: true # Set to true to build and push in one go
           tags: ${{ steps.meta.outputs.tags }}
           labels: latest
