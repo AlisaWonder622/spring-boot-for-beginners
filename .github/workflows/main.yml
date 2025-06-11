@@ -6,7 +6,7 @@ on:
       - main
 env:
   REGISTRY: ghcr.io
-  # IMAGE_NAME: ${{ github.repository | lower }} # REMOVE THIS LINE - it caused the error
+  IMAGE_NAME: alisawonder/spring-test-app # REMOVE THIS LINE - it caused the error
     
 jobs:
   build-deploy:
@@ -15,11 +15,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      # --- NEW STEP: Set lowercase image name ---
-      - name: Set lowercase image name for Docker tag
-        run: echo "IMAGE_NAME=${{ github.repository | lower }}" >> $GITHUB_ENV
-        # This command sets the 'IMAGE_NAME' environment variable for all subsequent steps in this job.
 
       - name: Setup JDK 17
         uses: actions/setup-java@v3
@@ -49,5 +44,4 @@ jobs:
           dockerfile: Dockerfile
           push: true # Set to true to build and push in one go
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest # Now env.IMAGE_NAME will be lowercase
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:today  # Now env.IMAGE_NAME will be lowercase
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
