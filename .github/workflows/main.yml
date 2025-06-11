@@ -43,4 +43,5 @@ jobs:
           context: .
           dockerfile: Dockerfile
           push: true # Set to true to build and push in one go
-          tags: ${{ github.actor }}/spring-boot-for-beginners:latest,${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:today
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
