@@ -5,8 +5,8 @@ on:
     branches:
       - main
 env:
-    REGISTRY: ghcr.io
-    IMAGE_NAME: ${{ github.repository }}
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository | lower }} # <<--- ADD '| lower' FILTER HERE
     
 jobs:
   build-deploy:
